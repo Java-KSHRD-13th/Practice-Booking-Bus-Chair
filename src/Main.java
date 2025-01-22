@@ -22,7 +22,7 @@ public class Main {
 
         while (true){
             System.out.print("-> Enter the Seat of bus between [25-85]: ");
-            seat = sc.next();
+            seat = sc.nextLine();
             boolean vSeat = Pattern.matches("\\d+", seat);
 
             if (vSeat)
@@ -50,7 +50,7 @@ public class Main {
                     System.out.println("|____________________________________________________________|");
                 }
             }
-            System.out.print(red+"\t( - ) "+rec+" : Unavailable( "+ red+unavailable + rec+ " )\t\t");
+            System.out.print("\n"+red+"\t( - ) "+rec+" : Unavailable( "+ red+unavailable + rec+ " )\t\t");
             unavailable=0;
             System.out.println(gre+"( + ) "+rec+" : Available( "+ gre+ available +rec+" )");
             available=0;
@@ -59,7 +59,7 @@ public class Main {
             String isBooking;
             while (true){
                 System.out.print("\n=> Do you want to booking the chair (Y/N)? : ");
-                isBooking = sc.next();
+                isBooking = sc.nextLine();
                 boolean vIsBooking = Pattern.matches("^[yYnN]$", isBooking);
                 System.out.println(vIsBooking? "" : "Wrong input. Please input only yes(y/Y) or no(n/N).");
                 if (vIsBooking)
@@ -69,7 +69,7 @@ public class Main {
             if (isBooking.equalsIgnoreCase("y")){
                 while (true){
                     System.out.print("\n-> Enter Chair number to booking: ");
-                    bookChair = sc.next();
+                    bookChair = sc.nextLine();
                     boolean vBookChair = Pattern.matches("\\d+", bookChair);
                     System.out.println(vBookChair? "" : "Wrong input. Please input only number.");
                     if (vBookChair)
@@ -78,12 +78,14 @@ public class Main {
 
                 if (Integer.parseInt(bookChair) <= booked.length){
                     String YesNo;
-                    if(booked[Integer.parseInt(bookChair) -1])
-                        System.out.println("The chair you are looking has been booked.");
+                    if(booked[Integer.parseInt(bookChair) -1]){
+                        System.out.println("The chair you are looking has been booked. Press any key to Continue.");
+                        sc.nextLine();
+                    }
                     else{
                         while (true){
                             System.out.print("-> Do you want to book chair number "+ bookChair+" (y/n): ");
-                            YesNo = sc.next();
+                            YesNo = sc.nextLine();
                             boolean vYesNo = Pattern.matches("^[yYnN]$", YesNo);
                             System.out.println(vYesNo? "" : "Wrong input. Please input only yes(y/Y) or no(n/N).");
                             if (vYesNo)
@@ -105,8 +107,6 @@ public class Main {
                 }
                 else
                     System.out.println("Please check the number of seats and rewrite the booking seat.");
-
-                System.out.println(bookChair);
             }else {
                 System.out.println("Thank you! Good Luck!😁");
                 break;
