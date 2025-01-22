@@ -20,18 +20,19 @@ public class Main {
         boolean[] booked = null;
         String bookChair;
 
+        System.out.println("\n================== SETUP CHAIR IN BUS ==================\n");
         while (true){
-            System.out.print("-> Enter the Seat of bus between [25-85]: ");
+            System.out.print("-> Enter the Seat of bus between [25-45]: ");
             seat = sc.nextLine();
             boolean vSeat = Pattern.matches("\\d+", seat);
 
             if (vSeat)
-                if (Integer.parseInt(seat) >= 25 && Integer.parseInt(seat) <= 85)
+                if (Integer.parseInt(seat) >= 25 && Integer.parseInt(seat) <= 45)
                     break;
                 else
-                    System.out.println("Wrong input. You can input numbers of seat between [25-85].");
+                    System.out.println("Wrong input. You can input numbers of seat between [25-45].");
             else
-                System.out.println("Wrong input. Please input only number between [25-85].");
+                System.out.println("Wrong input. Please input only number between [25-45].");
         }
 
         booked = new boolean[Integer.parseInt(seat)];
